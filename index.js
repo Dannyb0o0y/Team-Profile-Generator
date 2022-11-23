@@ -1,12 +1,12 @@
 // node modules
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateTeam = require("./src/page-template.js");
+const generateTeam = require("./template.js");
 
 // lib modules
 const Engineer = require("./lib/Developer");
 const Intern = require("./lib/Intern");
-const Manager = require("./lib/Leader");
+const Manager = require("./lib/Manager");
 
 // Array for answers to questions
 const newStaffMemberData = [];
@@ -114,9 +114,5 @@ promptQuestions();
 
 function createTeam() {
   console.log("new guy", newStaffMemberData);
-  fs.writeFileSync(
-    "./output/index.html",
-    generateTeam(newStaffMemberData),
-    "utf-8"
-  );
+  fs.writeFileSync("./index.html", generateTeam(newStaffMemberData), "utf-8");
 }
